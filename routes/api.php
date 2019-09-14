@@ -36,6 +36,8 @@ Route::group(['middleware' =>[ 'cors','jwt.auth']], function() {
 	Route::post('add_group','GroupController@store');
 	Route::get('get_groups/{id}','GroupController@index');
 	Route::get('get_member_loan_installments','LoansController@getLoanInstallments');
+	//Heir
+	Route::post('add_heir','HeirController@store');
 
 });
 
