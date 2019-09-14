@@ -32,7 +32,6 @@ class CreateHeirsTable extends Migration
             $table->integer('member_id')->length(11)->unsigned()->nullable()->index();
             $table->timestamps();
             //foreign keys
-            $table->foreign('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('member_id')->references('member_id')->on('members')->onUpdate('cascade')->onDelete('cascade');
         });
     }
