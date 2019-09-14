@@ -26,6 +26,8 @@ class CreateMembersTable extends Migration
             $table->string('email',100);
             $table->string('address',100);
             $table->string('residence',100);
+            $table->string('business',100);
+            $table->date('join_date');
             $table->string('profile_picture',20)->nullable();
             $table->integer('group_id')->length(11)->unsigned()->nullable()->index();
             $table->timestamps();
