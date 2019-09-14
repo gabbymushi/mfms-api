@@ -19,7 +19,7 @@ class CreateHeirsTable extends Migration
             $table->string('middle_name',30)->nullable;
             $table->string('last_name',30);
             $table->enum('gender', ['male','female']);
-            $table->enum('relation', ['son','daugther','wife','husband','father','mother','other']);
+            $table->enum('relation', ['son','daughter','wife','husband','father','mother','other']);
             $table->date('birthday');
             //$table->integer('user_id')->length(11)->unsigned()->nullable()->index();
             $table->string('phone_no',20);
@@ -28,13 +28,12 @@ class CreateHeirsTable extends Migration
             $table->string('address',100);
             $table->string('residence',100);
             $table->string('business',100);
-            $table->date('join_date');
             $table->string('profile_picture',20)->nullable();
-            $table->integer('group_id')->length(11)->unsigned()->nullable()->index();
+            $table->integer('member_id')->length(11)->unsigned()->nullable()->index();
             $table->timestamps();
             //foreign keys
             $table->foreign('user_id')->references('user_id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('group_id')->references('group_id')->on('groups')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('member_id')->references('member_id')->on('members')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
