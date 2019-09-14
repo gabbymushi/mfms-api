@@ -94,7 +94,7 @@ private function storeMemberDetails($user_id,$request){
      */
     public function show($member_id)
     {
-        $member = Member::where(['member_id' => $member_id])->get();
+        $member = Member::where(['member_id' => $member_id])->with('heir')->get();
         return Response::json($member);
     }
 
