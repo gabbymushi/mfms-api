@@ -19,6 +19,7 @@ class CreateHeirsTable extends Migration
             $table->string('middle_name',30)->nullable;
             $table->string('last_name',30);
             $table->enum('gender', ['male','female']);
+            $table->enum('relation', ['son','daugther','wife','husband','father','mother','other']);
             $table->date('birthday');
             //$table->integer('user_id')->length(11)->unsigned()->nullable()->index();
             $table->string('phone_no',20);
