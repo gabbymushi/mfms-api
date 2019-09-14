@@ -40,8 +40,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
 //        $validator = Validator::make($request->all(), [
 //            'name' => 'required|string|max:191',
 //            'email' => 'required|string|email|max:255',
@@ -59,12 +58,12 @@ class UsersController extends Controller
 
         ]);
         $user->save();
-        $this->storeMemberDetails($user->user_id,$request);
+        $member=$this->storeMemberDetails($user->user_id,$request);
        // return response()->json('Successfully added');
         //$user = User::first();
         //$token = JWTAuth::fromUser($user);
 
-        return Response::json($user->user_id);
+        return Response::json($member);
     }
 private function storeMemberDetails($user_id,$request){
     $model = new Member();
@@ -81,7 +80,10 @@ private function storeMemberDetails($user_id,$request){
     $model->residence = $request->input('residence');
     $model->profile_picture = $request->input('profile_picture');
     $model->group_id = $request->input('group_id');
+    $model->join_date = $request->input('join_date');
+    $model->business = $request->input('business');
     $model->save();
+    return $model;
 
 }
     /**
