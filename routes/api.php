@@ -14,35 +14,28 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
-Route::post('login','LoginController@login');
-Route::group(['middleware' =>[ 'cors','jwt.auth']], function() { 
-     //User
-    Route::post('add_user','UsersController@store');
-    Route::get('get_members/{id}','UsersController@index');
-    Route::get('get_member/{id}','UsersController@show');
+Route::post('login', 'LoginController@login');
+Route::group(['middleware' => ['cors', 'jwt.auth']], function () {
+	//User
+	Route::post('add_user', 'UsersController@store');
+	Route::get('get_members/{id}', 'UsersController@index');
+	Route::get('get_member/{id}', 'UsersController@show');
 	//Ledger
-	Route::post('add_ledger','LedgerController@store');
+	Route::post('add_ledger', 'LedgerController@store');
 	//Shares
-	Route::post('buy_share','SharesController@store');
-	Route::get('get_shares','SharesController@index');
+	Route::post('buy_share', 'SharesController@store');
+	Route::get('get_shares', 'SharesController@index');
 	//Loans
-	Route::post('grant_loan','LoansController@store');
-	Route::get('get_member_loan','LoansController@index');
-	Route::get('get_member_loan_installments','LoansController@getLoanInstallments');
+	Route::post('grant_loan', 'LoansController@store');
+	Route::get('get_member_loan', 'LoansController@index');
+	Route::get('get_member_loan_installments', 'LoansController@getLoanInstallments');
 	//Groups
-	Route::post('add_group','GroupController@store');
-	Route::get('get_groups/{id}','GroupController@index');
-	Route::get('get_member_loan_installments','LoansController@getLoanInstallments');
+	Route::post('add_group', 'GroupController@store');
+	Route::get('get_groups/{id}', 'GroupController@index');
+	Route::get('get_member_loan_installments', 'LoansController@getLoanInstallments');
 	//Heir
-	Route::post('add_heir','HeirController@store');
-
+	Route::post('add_heir', 'HeirController@store');
 });
-
-
-
-
-
-
